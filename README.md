@@ -21,35 +21,36 @@ Application is going to run into two parts
 ## Email Scheduling
 We are using Mysql database so install mysql database if you have not installed it and follow instrunctions manually
 
-### Create a Database name **schedule_email**. 
+#### Create a Database name **schedule_email**. 
 ```bash
 mysql> create database schedule_email;
 mysql> use schedule_email;
 mysql> GRANT ALL PRIVILEGES ON schedule_email.* TO 'username'@'localhost';
 ```
-### Download the following SQL script and run it in your MySQL database to create all the Quartz specific tables.
+#### Download the following SQL script and run it in your MySQL database to create all the Quartz specific tables.
 	+ [Jobs Database table Script](https://github.com/quartznet/quartznet/blob/master/database/tables/tables_mysql_innodb.sql)
 ```bash
 mysql> source <PATH_TO_Jobs_Database_table_Script.sql> 
 ``` 
 
-### Update `spring.datasource.username` and `spring.datasource.password` in [application.properties](/email-scheduler/src/main/resources/application.properties) according to your Mysql Configuration. ( or parse as argument via CLI)
+#### Update `spring.datasource.username` and `spring.datasource.password` in [application.properties](/email-scheduler/src/main/resources/application.properties) according to your Mysql Configuration. ( or parse as argument via CLI)
 
-###  Change to folder **email_scheduler** in cloned repo.
+####  Change to folder **email_scheduler** in cloned repo.
 ```bash
 $ cd email_scheduler
 ``` 
-###  **Run application**
+####  **Run application**
 ```bash
 $ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.mail.password=<password>,--spring.mail.username=<email>
 ```
 
+**NOTE**
+    +  8080 is default port number but you can define port number by following step 4
+    + Gmail’s SMTP access is disabled by default. To allow email scheduler to send emails using your Gmail account -
 
-+ *Note:* 8080 is default port number but you can define port number by following step 4
-+ *Note* Gmail’s SMTP access is disabled by default. To allow email scheduler to send emails using your Gmail account -
+        -   Go to [https://myaccount.google.com/security?pli=1#connectedapps](https://myaccount.google.com/security?pli=1#connectedapps)
+        -   Set ‘Allow less secure apps’ to YES
 
-    -   Go to [https://myaccount.google.com/security?pli=1#connectedapps](https://myaccount.google.com/security?pli=1#connectedapps)
-    -   Set ‘Allow less secure apps’ to YES
 
 Now we are good to move on our Application Server as Email Scheduler is running fine
 
