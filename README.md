@@ -40,7 +40,7 @@ mysql> GRANT ALL PRIVILEGES ON schedule_email.* TO 'username'@'localhost';
 
 #### Download the following SQL script and run it in your MySQL database to create all the Quartz specific tables.
 
-	- [Jobs Database table Script](https://github.com/quartznet/quartznet/blob/master/database/tables/tables_mysql_innodb.sql)
++ [Jobs Database table Script](https://github.com/quartznet/quartznet/blob/master/database/tables/tables_mysql_innodb.sql)
 
 ```bash
 mysql> source <PATH_TO_Jobs_Database_table_Script.sql> 
@@ -64,8 +64,8 @@ $ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.mail.password=<passwo
     -  8080 is default port number but you can define port number by following step 4
     - Gmail’s SMTP access is disabled by default. To allow email scheduler to send emails using your Gmail account -
 
-        -   Go to [https://myaccount.google.com/security?pli=1#connectedapps](https://myaccount.google.com/security?pli=1#connectedapps)
-        -   Set ‘Allow less secure apps’ to YES
+        1   Go to [https://myaccount.google.com/security?pli=1#connectedapps](https://myaccount.google.com/security?pli=1#connectedapps)
+        2   Set ‘Allow less secure apps’ to YES
 
 
 Now we are good to move on our Application Server as Email Scheduler is running fine
