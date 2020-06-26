@@ -3,32 +3,45 @@
 A Jorney Remainder which will help you to set email remainder for your journey
 
 ## Tech Stack
+
 + Node JS
+
 + Java
+
 + Mysql
 
 **Clone The Application**
 
 ```bash 
+
 $ git clone https://github.com/agaraman0/journeyReminder.git
+
 $ cd journeyReminder/
+
 ```
 
 Application is going to run into two parts 
+
 1. Email Scheduling : This will be responsible for email scheduling to send remainder email at particular time. 
+
 2. Application Server: This will be our main server on which our application will run and pass it to Email Scheduling Server.
 
 ## Email Scheduling
+
 We are using Mysql database so install mysql database if you have not installed it and follow instrunctions manually
 
 #### Create a Database name **schedule_email**. 
+
 ```bash
 mysql> create database schedule_email;
 mysql> use schedule_email;
 mysql> GRANT ALL PRIVILEGES ON schedule_email.* TO 'username'@'localhost';
 ```
+
 #### Download the following SQL script and run it in your MySQL database to create all the Quartz specific tables.
+
 	+ [Jobs Database table Script](https://github.com/quartznet/quartznet/blob/master/database/tables/tables_mysql_innodb.sql)
+
 ```bash
 mysql> source <PATH_TO_Jobs_Database_table_Script.sql> 
 ``` 
@@ -36,10 +49,13 @@ mysql> source <PATH_TO_Jobs_Database_table_Script.sql>
 #### Update `spring.datasource.username` and `spring.datasource.password` in [application.properties](/email-scheduler/src/main/resources/application.properties) according to your Mysql Configuration. ( or parse as argument via CLI)
 
 ####  Change to folder **email_scheduler** in cloned repo.
+
 ```bash
 $ cd email_scheduler
 ``` 
+
 ####  **Run application**
+
 ```bash
 $ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.mail.password=<password>,--spring.mail.username=<email>
 ```
