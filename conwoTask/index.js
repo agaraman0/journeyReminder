@@ -127,7 +127,7 @@ app.post('/', function(req,res){
 
                     request(scheduleJourney, function(err,respo,body){
                         if (err){
-                            res.send("Try Again Later, Service Offline")
+                            res.send("Some Error Occured, Try later")
                         }
                         else if (respo.statusCode==200){
                             
