@@ -15,6 +15,7 @@ $ cd journeyReminder/
 ### Folder Structure
 ![Screenshot from 2020-06-26 11-09-03](https://user-images.githubusercontent.com/29687692/85826850-a2ac3080-b7a2-11ea-883d-cf2a22398811.png)
 
+
 Application is going to run into two parts 
 1. Email Scheduling : This will be responsible for email scheduling to send remainder email at particular time. 
 2. Application Server: This will be our main server on which our application will run and pass it to Email Scheduling Server.
@@ -34,13 +35,16 @@ mysql> GRANT ALL PRIVILEGES ON schedule_email.* TO 'username'@'localhost';
 mysql> source <PATH_TO_Jobs_Database_table_Script.sql> 
 ``` 
 3. update `spring.datasource.username` and `spring.datasource.password` in [application.properties](/email-scheduler/src/main/resources/application.properties) according to your Mysql Configuration. ( or parse as argument via CLI)
+
+
 ![Screenshot from 2020-06-26 11-09-47](https://user-images.githubusercontent.com/29687692/85826847-a17b0380-b7a2-11ea-8ac3-ee7f24595b37.png)
+
 4. [optional] if we want to run our email scheduler on specific port so for that we can add ``server.port=<port_number>`` in [application.properties](/email-scheduler/src/main/resources/application.properties)
 5.  change to folder name **email_scheduler** in cloned repo.
 ```bash
 $ cd email_scheduler
 ``` 
-6. Run application
+6. **Run application**
 ```bash
 $ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.mail.password=<password>,--spring.mail.username=<email>
 ```
@@ -71,7 +75,7 @@ Add Google Map API key and Scheduler port in `.env_sample` and rename it as `.en
 ```bash
 $ node index.js
 ```
-Run on specific port 
+To Run on specific port you can try 
 
 ```bash
 $ PORT=<port> node index.js
@@ -80,8 +84,6 @@ $ PORT=<port> node index.js
 open browser and check at this address
 
 http://localhost:3000/
-
-
 
 
 
